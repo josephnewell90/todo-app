@@ -16,14 +16,20 @@
   "bugs": {
     "url": "https://github.com/josephnewell90/todo-app/issues"
   },
-  "homepage": "https://github.com/josephnewell90/todo-app#readme",
+  "homepage": "https://github.com/j osephnewell90/todo-app#readme",
   "devDependencies": {
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-htmlmin": "^1.2.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.4.1"
+      "bower-files": "^3.11.3",
+       "eslint": "^1.7.2",
+       "express": "^4.13.3",
+       "gulp": "^3.9.0",
+       "gulp-concat": "^2.6.0",
+       "gulp-htmlmin": "^1.2.0",
+       "gulp-livereload": "^3.8.1",
+       "gulp-pleeease": "^2.0.1",
+       "gulp-sourcemaps": "^1.6.0",
+       "gulp-uglify": "^1.4.1"
+  },
+  "dependencies": {
+    "bower-files": "^3.11.3"
   }
 }
