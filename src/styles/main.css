@@ -1,0 +1,15 @@
+/* Push our body down below the nav bar */
+body {
+  padding-top: 70px;
+}
+
+
+h1, h2, h3 {
+  display: block;
+  letter-spacing: .25em;
+}
+
+.keepOpen
+{
+  clear: both;
+}

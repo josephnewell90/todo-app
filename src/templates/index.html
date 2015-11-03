@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="TodoApp">
+<html ng-app="charSheetApp">
   <head>
     <meta charset="utf-8">
     <title></title>
     <link href="/css/app.min.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1>Todo App</h1>
-    <div ng-view></div>
+  <body class="text-center center-block col-md-12">
+    <!-- Fixed top nav bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand" href="#">The Strange Character Sheet</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Controller View Location -->
+    <div class="container">
+      <div ng-view> </div>
+    </div>
 
     <footer>
       <script src="/js/app.min.js"></script>

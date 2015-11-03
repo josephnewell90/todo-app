@@ -1,5 +1,5 @@
 angular
-  .module('TodoApp', [
+  .module('charSheetApp', [
     'ngRoute',
     'LoginController',
   ])
@@ -10,6 +10,7 @@ angular
       .when('/login', {
         templateUrl: '/partials/login-controller.html',
         controller: 'LoginController',
+        controllerAs: 'login',
       })
       .otherwise('/login');
     }
