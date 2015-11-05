@@ -21,7 +21,12 @@
           type="{{ login.showPassword ? 'text' : 'password' }}"
           ng-model="login.inputs.password"/>
           <span class="input-group-btn">
-            <passwordToggle value="login.showPassword" active="eye-open" inactive="eye-close"></passwordToggle>
+            <passwordToggle
+              value="login.showPassword"
+              active="eye-open"
+              inactive="eye-close"
+            >
+            </passwordToggle>
           </span>
         </div>
       </div>
