@@ -14,34 +14,23 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input
-        class="form-control"
-        name="password"
-        type="password"
-        ng-model="login.inputs.password"/>
+        <div class="input-group">
+          <input
+          class="form-control"
+          name="password"
+          type="{{ login.showPassword ? 'text' : 'password' }}"
+          ng-model="login.inputs.password"/>
+          <span class="input-group-btn">
+            <passwordToggle value="login.showPassword" active="eye-open" inactive="eye-close"></passwordToggle>
+          </span>
+        </div>
       </div>
       <div class="form-group">
         <button type="submit" ng-click="login.inputType = 'signin'" class="btn btn-primary">Login</button>
         <button type="submit" ng-click="login.inputType = 'register'" class="btn btn-info">Register</button>
       </div>
-    </form>
-  </div>
-
-  <h2 class="keepOpen">OR</h2>
-
-  <div class="col-sm-4 col-sm-offset-4">
-  <h1>Register</h1>
-    <form ng-submit="register.signin(login.inputs.email, register.inputs.password)">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input class="form-control" placeholder="you@example.com" name="email" type="text" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" name="password" type="password" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Register</button>
+      <div class="alert alert-danger" ng-show="login.errorMessage">
+        <p>{{ login.errorMessage }}</p>
       </div>
     </form>
   </div>
