@@ -7,7 +7,10 @@ angular
     'characterSheetHost',
     '$q',
     function($http, host, $q) {
+      var currentUser;
+
       var auth = {
+
         login: function(email, password) {
           return $http
             .post(host + '/session', {
@@ -43,7 +46,7 @@ angular
               currentUser = null;
               return false;
             });
-        }
+        },
       };
       return auth;
     },

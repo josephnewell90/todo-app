@@ -1,5 +1,5 @@
 angular
-  .module('TodoApp', [
+  .module('charSheetApp', [
     'ngRoute',
     'LoginController',
     'characterSheetController',
@@ -14,9 +14,13 @@ angular
         controller: 'LoginController',
         controllerAs: 'login',
       })
-      .when('/characterSheet', {
-        templateUrl: '/partials/characterSheet-controller.html',
-        controller: 'characterSheet-controller',
+      .when('/characterSheetList', {
+        templateURL: '/partials/characterSheetList-controller.html',
+        controller: 'characterSheetListController',
+        controllerAs: 'characterSheetList',
+      })
+      .when('/characterSheetList/:id', {
+        controller: 'characterSheetController',
         controllerAs: 'characterSheet'
       })
       .otherwise('/login');

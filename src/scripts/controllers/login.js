@@ -1,34 +1,51 @@
 angular
   .module('LoginController', [
     'characterSheet.auth',
-    'characterSheet.users'
+    'characterSheet.users',
+    'toggleDirective',
   ])
   .controller('LoginController', [
     'auth',
     'users',
-    function (auth) {
+    '$location',
+    function (auth, users, $location) {
 
-      this.signin = function(email, password) {
-        auth.login(email, password)
+      var login = this;
+
+      auth.isLoggedIn().then(function(isLoggedIn) {
+        if (isLoggedIn) {
+          $location.url('/characterSheetList');
+        }
+      });
+
+      login.inputType = 'signin';
+
+      login.submit = function(email, password)
+      {
+        login.errorMessage = null;
+
+        login[login.inputType](email, password)
           .then(function(res) {
-            console.log(res.data);
+            $location.url('/characterSheetList');
           })
           .catch(function(res) {
-            console.log('error', res.data);
+            console.log(res.status, res.data);
+            login.errorMessage = res.data.message;
           });
       };
 
-      this.register = function(email, password, confirmPassword) {
-        users
+      login.signin = function(email, password) {
+        return auth.login(email, password);
+      };
+
+      login.register = function(email, password, confirmPassword) {
+        return users
           .create({
             email: email,
             password: password,
           })
           .then(function(res) {
-            console.log(res.data);
-          })
-          .catch(function(res) {
-            console.log('error', res.data);
+            return auth.login(email, password);
           });
       };
     },
