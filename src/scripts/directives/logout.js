@@ -10,16 +10,16 @@ angular
         restrict: 'AE',
         scope: {},
         template:'<a href="" ng-click="logoutClickHandler()">Logout</a>',
-          link: function(scope, elem, attrs) {
+        link: function(scope, elem, attrs) {
 
-            scope.logout = function() {
-              auth.logout().then(
-                function() {
-                  $location.url('/login');
-                });
-            };
+          scope.logoutClickHandler = function() {
+            auth.logout().then(
+              function() {
+                $location.url('/login');
+              });
+          };
 
-          },
+        },
       };
     }
   ]);

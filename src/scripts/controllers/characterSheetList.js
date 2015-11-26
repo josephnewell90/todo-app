@@ -1,7 +1,15 @@
-angular
-.module('characterSheetListController', [])
+angular.module('characterSheetListController', [
+  'characterSheet.auth',
+])
 .controller('characterSheetListController', [
-    function() {
+  'auth',
+  '$location',
 
+  function(auth, $location) {
+    auth.isLoggedIn().then(function(isLoggedIn) {
+      if (!isLoggedIn) {
+        $location.url('/login');
+      }
+    });
   }
 ]);

@@ -19,23 +19,25 @@
           class="form-control"
           name="password"
           type="{{ login.showPassword ? 'text' : 'password' }}"
-          ng-model="login.inputs.password"/>
+          ng-model="login.inputs.password"
+          />
           <span class="input-group-btn">
             <passwordToggle
               value="login.showPassword"
               active="eye-open"
               inactive="eye-close"
-            >
-            </passwordToggle>
+            ></passwordToggle>
           </span>
         </div>
       </div>
+
+      <div class="alert alert-danger" ng-show="login.errorMessage">
+        <p>{{ login.errorMessage }}</p>
+      </div>
+
       <div class="form-group">
         <button type="submit" ng-click="login.inputType = 'signin'" class="btn btn-primary">Login</button>
         <button type="submit" ng-click="login.inputType = 'register'" class="btn btn-info">Register</button>
-      </div>
-      <div class="alert alert-danger" ng-show="login.errorMessage">
-        <p>{{ login.errorMessage }}</p>
       </div>
     </form>
   </div>

@@ -15,7 +15,7 @@ angular.module('characterSheet.characterSheetList', [
       },
       read: function(userId) {
         return $http
-          .get(host + '/users/' + userId + '/todos', data)
+          .get(host + '/users/' + userId + '/todos')
           .then(function(res) {
             return res.data;
           });
@@ -37,14 +37,3 @@ angular.module('characterSheet.characterSheetList', [
     };
   },
 ]);
-// .controller('characterSheet', [
-//   'auth',
-//   '$location',
-//   function(auth, $location) {
-//     auth.isLoggedIn().then(function(isLoggedIn) {
-//       if (!isLoggedIn) {
-//         $location.url('/login');
-//       }
-//     });
-//   }
-// ]);
