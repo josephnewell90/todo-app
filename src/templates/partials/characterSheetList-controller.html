@@ -1,4 +1,33 @@
 <div class="text-center">
   <h1>Character Sheet List</h1>
   <h2>Who are you today?</h2>
+
+<h3>Current character ideas</h3>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="characterSheet in characterSheets.characters">
+    {{ characterSheet.name }} <small>{{ characterSheet.description }}</small>
+  </li>
+</ul>
+
+  <form ng-submit="characterSheets.createCharacterSheet(characterSheets.create)">
+    <h3>Create a new character idea</h3>
+    <!-- TODO Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input name="name" id="name" class="form-control" type="text" ng-model="characterSheets.create.name" />
+    </div>
+    <!-- TODO Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" class="form-control" ng-model="characterSheets.create.description"> </textarea>
+    </div>
+    <!-- TODO Tags -->
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input name="tags" id="tags" class="form-control" type="text" ng-model="characterSheets.create.tags"/>
+      <p>Seperate tags with a comma</p>
+    </div>
+
+    <button class="btn btn-primary btn-lg btn-block">Add Character Idea</button>
+  </form>
 </div>

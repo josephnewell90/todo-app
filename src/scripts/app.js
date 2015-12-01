@@ -15,14 +15,14 @@ angular
         controllerAs: 'login',
       })
       .when('/characterSheetList', {
-        templateURL: '/partials/characterSheetList-controller.html',
-        controller: 'characterSheetListController',
-        controllerAs: 'characterSheetList',
-      })
-      .when('/characterSheetList/:id', {
+        templateUrl: '/partials/characterSheetList-controller.html',
         controller: 'characterSheetController',
-        controllerAs: 'characterSheet'
+        controllerAs: 'characterSheets',
       })
+      // .when('/characterSheetList/:id', {
+      //   controller: 'characterSheetController',
+      //   controllerAs: 'characterSheet'
+      // })
       .otherwise('/login');
     }
   ]);
