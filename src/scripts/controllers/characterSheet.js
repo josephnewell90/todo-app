@@ -5,12 +5,15 @@ angular.module('characterSheetController', [
 .controller('characterSheetController', [
   'auth',
   '$location',
-  'characterSheets',
+  'characterSheetList',
 
   function(auth, $location, characterSheets) {
 
 
     var self = this;
+    self.errorMessage = '';
+
+    self.selectedFilter = self.characterSheetFilters;
 
     auth.isLoggedIn().then(function(currentUser) {
       if (!currentUser) {
@@ -39,6 +42,8 @@ angular.module('characterSheetController', [
     resetCreateForm();
 
     self.createCharacterSheet = function (data) {
+      self.errorMessage = '';
+
       var characterSheet = {
         name: data.name,
         description: data.description || 'No Description',
@@ -53,16 +58,34 @@ angular.module('characterSheetController', [
       };
 
       // data.tags = data.tags.split(',').map(function(tag) { return tag.trim(); });
-      characterSheets.create(self.currentUser.id, data)
+      characterSheets.create(self.currentUser.id, characterSheet)
         .then(function() {
           readCharacterSheets();
           resetCreateForm();
           console.log('success');
         })
-        .catch(function(err) {
-          console.log(err);
+        .catch(function(res) {
+          console.log(res.data);
           //TODO Error handling
         });
+
+        self.updateCharacterSheet = function(characterSheet) {
+            var updateCharacterSheet = {
+              completed: todo.completed,
+              name: characterSheet.name,
+              archived: characterSheet.archived,
+            };
+          // characterSheets.update(self.currentUser.id, characterSheet.id, characterSheet)
+          //   .then (function () {
+          //     readCharacterSheets();
+          //   });
+        };
+
+        self.archiveCharacterSheet = function(characterSheet) {
+          characterSheet.archived = true;
+          self.updateCharacterSheet(characterSheet);
+        };
     };
+
   },
 ]);

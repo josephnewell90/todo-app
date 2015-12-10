@@ -17,7 +17,7 @@ angular
       .when('/characterSheetList', {
         templateUrl: '/partials/characterSheetList-controller.html',
         controller: 'characterSheetController',
-        controllerAs: 'characterSheets',
+        controllerAs: 'characterSheetList',
       })
       // .when('/characterSheetList/:id', {
       //   controller: 'characterSheetController',

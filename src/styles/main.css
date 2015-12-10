@@ -13,3 +13,7 @@ h1, h2, h3 {
 {
   clear: both;
 }
+
+.strikeThrough {
+  text-decoration: line-through;
+}

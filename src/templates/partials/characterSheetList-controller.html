@@ -3,9 +3,14 @@
   <h2>Who are you today?</h2>
 
 <h3>Current character ideas</h3>
+
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="characterSheet in characterSheets.characters">
-    {{ characterSheet.name }} <small>{{ characterSheet.description }}</small>
+  <li class="list-group-item" ng-repeat="characterSheet in characterSheetList.characterSheets">
+    <input type="checkbox" ng-model="characterSheet.completed" ng-change="characterSheet.updateCharacterSheet()" />
+    <h4>Name:</h4><p><span ng-class="{ strikeThrough : characterSheet.completed }"{{ characterSheet.name }}</span></p>
+    <h4>Description:</h4><p>{{ characterSheet.description }}</p>
+    <h4>Tags:</h4><p>{{ characterSheet.tags }}</p>
+    <button class="btn btn-danger btn-xs pull-right" ng-click="characterSheetList.archiveCharacterSheet(characterSheet)"><span class="glyphicon glyphicon-remove"></span></button>
   </li>
 </ul>
 
