@@ -5,16 +5,19 @@
 <h3>Current character ideas</h3>
 
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="characterSheet in characterSheetList.characterSheets">
-    <input type="checkbox" ng-model="characterSheet.completed" ng-change="characterSheet.updateCharacterSheet()" />
-    <h4>Name:</h4><p><span ng-class="{ strikeThrough : characterSheet.completed }"{{ characterSheet.name }}</span></p>
+  <li class="list-group-item" ng-repeat="characterSheet in characterSheetList.characterSheets" ng-class="{ strikeThrough : characterSheet.completed }">
+    <input type="checkbox" ng-model="characterSheet.completed" ng-change="characterSheetList.updateCharacterSheet(characterSheet)" />
+    <h4><span>{{ characterSheet.name }}</span></h4>
+    <hr />
     <h4>Description:</h4><p>{{ characterSheet.description }}</p>
     <h4>Tags:</h4><p>{{ characterSheet.tags }}</p>
-    <button class="btn btn-danger btn-xs pull-right" ng-click="characterSheetList.archiveCharacterSheet(characterSheet)"><span class="glyphicon glyphicon-remove"></span></button>
+    <button class="btn btn-danger btn-xs pull-right" ng-click="characterSheetList.archiveCharacterSheet(characterSheet)">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
   </li>
 </ul>
 
-  <form ng-submit="characterSheets.createCharacterSheet(characterSheets.create)">
+  <form ng-submit="characterSheetList.createCharacterSheet(characterSheets.create)"> 
     <h3>Create a new character idea</h3>
     <!-- TODO Name -->
     <div class="form-group">

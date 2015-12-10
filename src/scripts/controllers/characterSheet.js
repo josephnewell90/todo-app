@@ -5,7 +5,7 @@ angular.module('characterSheetController', [
 .controller('characterSheetController', [
   'auth',
   '$location',
-  'characterSheetList',
+  'characterSheets',
 
   function(auth, $location, characterSheets) {
 
@@ -33,9 +33,10 @@ angular.module('characterSheetController', [
     }
 
     function resetCreateForm() {
+      console.log('In resetCreateForm');
       self.create = {
-        name: null,
-        description: null,
+        name: '',
+        description: '',
         tags: '',
       };
     }
@@ -68,24 +69,29 @@ angular.module('characterSheetController', [
           console.log(res.data);
           //TODO Error handling
         });
-
-        self.updateCharacterSheet = function(characterSheet) {
-            var updateCharacterSheet = {
-              completed: todo.completed,
-              name: characterSheet.name,
-              archived: characterSheet.archived,
-            };
-          // characterSheets.update(self.currentUser.id, characterSheet.id, characterSheet)
-          //   .then (function () {
-          //     readCharacterSheets();
-          //   });
-        };
-
-        self.archiveCharacterSheet = function(characterSheet) {
-          characterSheet.archived = true;
-          self.updateCharacterSheet(characterSheet);
-        };
     };
+
+      self.updateCharacterSheet = function(characterSheet) {
+        var updatedCharacterSheet = {
+          completed: characterSheet.completed,
+          name: characterSheet.name,
+          archived: characterSheet.archived,
+        };
+
+
+        characterSheets.update(self.currentUser.id, characterSheet.id, updatedCharacterSheet)
+          .then(function () {
+            readCharacterSheets();
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      };
+
+      self.archiveCharacterSheet = function(characterSheet) {
+        characterSheet.archived = true;
+        self.updateCharacterSheet(characterSheet);
+      };
 
   },
 ]);
