@@ -5,34 +5,35 @@
 <h3>Current character ideas</h3>
 
 <ul class="list-group">
-  <li class="list-group-item" ng-repeat="characterSheet in characterSheetList.characterSheets" ng-class="{ strikeThrough : characterSheet.completed }">
+  <li class="list-group-item text-left" ng-repeat="characterSheet in characterSheetList.characterSheets" ng-class="{ strikeThrough : characterSheet.completed }">
+    <span class="glyphicon glyphicon-ok"></span>
     <input type="checkbox" ng-model="characterSheet.completed" ng-change="characterSheetList.updateCharacterSheet(characterSheet)" />
     <h4><span>{{ characterSheet.name }}</span></h4>
     <hr />
-    <h4>Description:</h4><p>{{ characterSheet.description }}</p>
-    <h4>Tags:</h4><p>{{ characterSheet.tags }}</p>
+    <p>{{ characterSheet.description }}</p>
+    <h5>Tags:</h5><p class="tags">{{ characterSheet.tags }}</p>
     <button class="btn btn-danger btn-xs pull-right" ng-click="characterSheetList.archiveCharacterSheet(characterSheet)">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
   </li>
 </ul>
 
-  <form ng-submit="characterSheetList.createCharacterSheet(characterSheets.create)"> 
+  <form ng-submit="characterSheetList.createCharacterSheet(characterSheetList.create)">
     <h3>Create a new character idea</h3>
     <!-- TODO Name -->
     <div class="form-group">
       <label for="name">Name</label>
-      <input name="name" id="name" class="form-control" type="text" ng-model="characterSheets.create.name" />
+      <input name="name" id="name" class="form-control" type="text" ng-model="characterSheetList.create.name" />
     </div>
     <!-- TODO Description -->
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea name="description" id="description" class="form-control" ng-model="characterSheets.create.description"> </textarea>
+      <textarea name="description" id="description" class="form-control" ng-model="characterSheetList.create.description"> </textarea>
     </div>
     <!-- TODO Tags -->
     <div class="form-group">
       <label for="tags">Tags</label>
-      <input name="tags" id="tags" class="form-control" type="text" ng-model="characterSheets.create.tags"/>
+      <input name="tags" id="tags" class="form-control" type="text" ng-model="characterSheetList.create.tags"/>
       <p>Seperate tags with a comma</p>
     </div>
 

@@ -14,6 +14,42 @@ h1, h2, h3 {
   clear: both;
 }
 
-.strikeThrough {
-  text-decoration: line-through;
+.strikeThrough > h4, .strikeThrough > hr, .strikeThrough > h5, .strikeThrough > .tags, .strikeThrough > p {
+    opacity: .3;
+}
+
+h4 {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+hr {
+    width: 100px;
+    margin: .25em 0 1em 0em;
+    border: 1px solid #333;
+}
+
+h5, .tags {
+    font-style: italic;
+    color: #999;
+    display: inline-block;
+}
+
+.tags {
+    margin: 0 1em;
+}
+
+span.glyphicon.glyphicon-ok {
+    margin: 0 auto;
+    font-size: 10em;
+    color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.strikeThrough .glyphicon-ok {
+  display: block !important;
 }
